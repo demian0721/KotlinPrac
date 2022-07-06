@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">KotlinPracChapter1</string>
+    <string name="click_count">Click Count : 0</string>
+</resources>
