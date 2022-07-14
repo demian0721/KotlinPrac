@@ -6,94 +6,108 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <ScrollView
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="-45dp">
+        android:layout_height="wrap_content"
+        android:background="@color/primary">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="161dp"
+            android:layout_height="55dp"
+            android:background="@drawable/logo_string"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <ImageView
+            android:layout_width="354dp"
+            android:layout_height="420dp"
+            android:layout_marginTop="11dp"
+            android:background="@drawable/img_main_picture"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textSolutionNow" />
+
+        <ImageView
+            android:layout_width="42dp"
+            android:layout_height="51dp"
+            android:layout_marginEnd="55dp"
+            android:layout_marginBottom="390dp"
+            android:background="@drawable/img_sparkling1"
+            app:layout_constraintBottom_toTopOf="@+id/divider"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="36dp"
+            android:layout_marginStart="46dp"
+            android:layout_marginBottom="389dp"
+            android:background="@drawable/img_sparkling2"
+            app:layout_constraintBottom_toTopOf="@+id/divider"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <ImageView
+            android:layout_width="26dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="69dp"
+            android:layout_marginBottom="365dp"
+            android:background="@drawable/img_sparkling3"
+            app:layout_constraintBottom_toTopOf="@+id/divider"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/textInMyHand"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="44dp"
+            android:fontFamily="@font/nanum_bold"
+            android:text="내 손안에 프로"
+            android:textColor="@color/white"
+            android:textSize="32sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+
+        <TextView
+            android:id="@+id/textSolutionNow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/nanum_bold"
+            android:text="질문을 올리면 바로 해결!"
+            android:textColor="@color/white"
+            android:textSize="21sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textInMyHand" />
+
+        <View
+            android:id="@+id/divider"
             android:layout_width="match_parent"
-            android:layout_height="600dp"
-            android:background="@color/primary">
+            android:layout_height="6dp"
+            android:background="@color/black"
+            app:layout_constraintBottom_toBottomOf="parent" />
 
-            <ImageView
-                android:id="@+id/imageView2"
-                android:layout_width="161dp"
-                android:layout_height="55dp"
-                android:background="@drawable/logo_string"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <TextView
-                android:id="@+id/textInMyHand"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="44dp"
-                android:fontFamily="@font/nanum_bold"
-                android:text="내 손안에 프로"
-                android:textColor="@color/white"
-                android:textSize="32sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/grass"
+        android:paddingTop="82dp"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout">
 
-            <TextView
-                android:id="@+id/textSolutionNow"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:fontFamily="@font/nanum_bold"
-                android:text="질문을 올리면 바로 해결!"
-                android:textColor="@color/white"
-                android:textSize="21sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textInMyHand" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/nanum_bold"
+            android:text="고민별 관심 태그"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-            <ImageView
-                android:layout_width="354dp"
-                android:layout_height="420dp"
-                android:layout_marginTop="11dp"
-                android:background="@drawable/img_main_picture"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textSolutionNow" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <ImageView
-                android:layout_width="42dp"
-                android:layout_height="51dp"
-                android:layout_marginEnd="66dp"
-                android:layout_marginBottom="396dp"
-                android:background="@drawable/img_sparkling1"
-                app:layout_constraintBottom_toTopOf="@+id/divider"
-                app:layout_constraintEnd_toEndOf="parent" />
-
-            <ImageView
-                android:layout_width="30dp"
-                android:layout_height="36dp"
-                android:layout_marginStart="57dp"
-                android:layout_marginBottom="393dp"
-                android:background="@drawable/img_sparkling2"
-                app:layout_constraintBottom_toTopOf="@+id/divider"
-                app:layout_constraintStart_toStartOf="parent" />
-
-            <ImageView
-                android:layout_width="26dp"
-                android:layout_height="30dp"
-                android:layout_marginStart="80dp"
-                android:layout_marginBottom="365dp"
-                android:background="@drawable/img_sparkling3"
-                app:layout_constraintBottom_toTopOf="@+id/divider"
-                app:layout_constraintStart_toStartOf="parent" />
-
-            <View
-                android:id="@+id/divider"
-                android:layout_width="match_parent"
-                android:layout_height="6dp"
-                android:background="@color/black"
-                app:layout_constraintBottom_toBottomOf="parent" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-    </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>
