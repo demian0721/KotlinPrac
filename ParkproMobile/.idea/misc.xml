@@ -20,6 +20,7 @@
         <entry key="app/src/main/res/layout/fragment_my_page.xml" value="0.5615942028985508" />
         <entry key="app/src/main/res/layout/fragment_notifications.xml" value="0.5615942028985508" />
         <entry key="app/src/main/res/layout/interest_tag_recycler_item.xml" value="0.11203703703703703" />
+        <entry key="app/src/main/res/layout/tag_video_recycler_item.xml" value="0.1" />
         <entry key="app/src/main/res/menu/bottom_nav_menu.xml" value="0.32068965517241377" />
       </map>
     </option>

@@ -6,10 +6,10 @@ data class BestLessonResponse(
     var count: Int? = null,
     var next: String? = null,
     var previous: String? = null,
-    var results: ArrayList<BestLessonResults>? = null,
+    var results: ArrayList<BestLessonResult>? = null,
 )
 
-data class BestLessonResults(
+data class BestLessonResult(
     @SerializedName("pro_id") var proId: Int? = null,
     @SerializedName("pro_name") var proName: String? = null,
     @SerializedName("small_profile_img") var smallProfileImg: String? = null,

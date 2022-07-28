@@ -10,12 +10,12 @@ import androidx.core.net.toUri
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.parkpromobile.R
-import com.example.parkpromobile.api.BestLessonResults
+import com.example.parkpromobile.api.BestLessonResult
 import com.example.parkpromobile.ui.home.HomeFragment
 
 class BestLesson(
     private val context: HomeFragment,
-    var dataset: ArrayList<BestLessonResults>?
+    var dataset: ArrayList<BestLessonResult>?
 ) : RecyclerView.Adapter<BestLesson.BestLessonViewHolder>() {
 
     //리사이클러뷰에서 사용할 데이터 미리 정의 -> 나중에 MainActivity등에서 datalist에 실제 데이터 추가

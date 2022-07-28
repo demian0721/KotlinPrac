@@ -29,7 +29,8 @@
                 android:id="@+id/smallProfileImg"
                 android:layout_width="116dp"
                 android:layout_height="116dp"
-                android:src="@drawable/img_empty_profile" />
+                android:src="@drawable/img_empty_profile"
+                tools:ignore="ContentDescription" />
 
 
         </androidx.cardview.widget.CardView>

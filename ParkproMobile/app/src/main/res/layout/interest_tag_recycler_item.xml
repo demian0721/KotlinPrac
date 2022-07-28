@@ -16,23 +16,19 @@
         app:cardCornerRadius="12dp"
         app:cardElevation="0dp"
         app:layout_constraintStart_toStartOf="parent"
-        tools:ignore="MissingConstraints"
-        android:clickable="true"
-        android:focusable="true"
-        >
+        tools:ignore="MissingConstraints">
 
         <TextView
             android:id="@+id/tagName"
             android:layout_width="wrap_content"
-            android:minWidth="62dp"
             android:layout_height="wrap_content"
+            android:minWidth="62dp"
             android:paddingHorizontal="12dp"
             android:paddingVertical="13dp"
             android:text="TagName"
-            android:textColor="@color/white"
-            android:textSize="16sp"
             android:textAlignment="center"
-            />
+            android:textColor="@color/white"
+            android:textSize="16sp" />
 
 
     </androidx.cardview.widget.CardView>

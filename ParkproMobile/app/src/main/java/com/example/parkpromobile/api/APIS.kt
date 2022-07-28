@@ -16,7 +16,7 @@ interface APIS {
         "content-type: application/json",
         "authorization: Token d8cf08777eb40706f2d056b8d2119e3f1a5de6a9"
     )
-    fun get_best_lessons(): Call<BestLessonResponse>
+    fun getBestLessons(): Call<BestLessonResponse>
 
     // 관심 태그 목록
     @GET("/users/interest-tags/")
@@ -25,7 +25,22 @@ interface APIS {
         "content-type: application/json",
         "authorization: Token d8cf08777eb40706f2d056b8d2119e3f1a5de6a9"
     )
-    fun get_interest_tags(): Call<ArrayList<InterestTagResponse>>
+    fun getInterestTags(): Call<ArrayList<InterestTagResponse>>
+
+    // 코칭 답변 목록
+    @GET("/coachings/answered/")
+    @Headers(
+        "accept: application/json",
+        "content-type: application/json",
+        "authorization: Token d8cf08777eb40706f2d056b8d2119e3f1a5de6a9"
+    )
+    fun getCoachingsAnswered(
+        @Query("tag_id") tagId: Int?,
+        @Query("pro_id") proId: Int?,
+        @Query("tag_exists") tagExists: Boolean?,
+        @Query("page") page: Int?,
+        @Query("size") size: Int?,
+    ): Call<CoachingsAnsweredResponse>
 
 
     companion object { // static 처럼 공유객체로 사용가능함. 모든 인스턴스가 공유하는 객체로서 동작함.
