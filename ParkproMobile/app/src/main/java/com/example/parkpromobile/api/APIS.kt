@@ -2,6 +2,9 @@ package com.example.parkpromobile.api
 
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
+import okhttp3.Interceptor
+import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Call
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -11,29 +14,14 @@ interface APIS {
 
     // 인기있는 프로 목록
     @GET("/coachings/sales/best/")
-    @Headers(
-        "accept: application/json",
-        "content-type: application/json",
-        "authorization: Token d8cf08777eb40706f2d056b8d2119e3f1a5de6a9"
-    )
     fun getBestLessons(): Call<BestLessonResponse>
 
     // 관심 태그 목록
     @GET("/users/interest-tags/")
-    @Headers(
-        "accept: application/json",
-        "content-type: application/json",
-        "authorization: Token d8cf08777eb40706f2d056b8d2119e3f1a5de6a9"
-    )
     fun getInterestTags(): Call<ArrayList<InterestTagResponse>>
 
     // 코칭 답변 목록
     @GET("/coachings/answered/")
-    @Headers(
-        "accept: application/json",
-        "content-type: application/json",
-        "authorization: Token d8cf08777eb40706f2d056b8d2119e3f1a5de6a9"
-    )
     fun getCoachingsAnswered(
         @Query("tag_id") tagId: Int?,
         @Query("pro_id") proId: Int?,
@@ -47,13 +35,29 @@ interface APIS {
         private const val BASE_URL = "http://parkpro-dev-api.gymtinc.com" // 주소
 
         fun create(): APIS {
-
-
+            val token = "d8cf08777eb40706f2d056b8d2119e3f1a5de6a9"
             val gson: Gson = GsonBuilder().setLenient().create();
+            val httpLoggingInterceptor = HttpLoggingInterceptor()
+            httpLoggingInterceptor.level = HttpLoggingInterceptor.Level.BODY
+
+            val headerInterceptor = Interceptor {
+                val request = it.request()
+                    .newBuilder()
+                    .addHeader("accept", "application/json")
+                    .addHeader("content-type", "application/json")
+                    .addHeader("authorization", "Token $token")
+                    .build()
+                return@Interceptor it.proceed(request)
+            }
+
+            val client = OkHttpClient.Builder()
+                .addInterceptor(headerInterceptor)
+                .addInterceptor(httpLoggingInterceptor)
+                .build()
 
             return Retrofit.Builder()
                 .baseUrl(BASE_URL)
-//                .client(client)
+                .client(client)
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .build()
                 .create(APIS::class.java)
