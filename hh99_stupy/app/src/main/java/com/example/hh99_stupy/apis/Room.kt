@@ -1,11 +1,8 @@
 package com.example.hh99_stupy.apis
 
-import android.util.Log
-import io.ktor.client.statement.*
-import io.ktor.http.*
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.withContext
+import kotlinx.serialization.Serializable
 
+@Serializable
 data class RoomResponse(
     var roomId: String?,
     var title: String?,
