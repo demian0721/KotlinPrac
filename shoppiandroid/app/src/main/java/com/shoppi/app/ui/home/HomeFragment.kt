@@ -13,50 +13,56 @@ import com.bumptech.glide.Glide
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import com.shoppi.app.R
+import com.shoppi.app.databinding.FragmentHomeBinding
 import com.shoppi.app.ui.common.ViewModelFactory
 
 class HomeFragment : Fragment() {
 
     private val viewModel: HomeViewModel by viewModels { ViewModelFactory(requireContext()) }
+    private lateinit var binding: FragmentHomeBinding
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_home, container, false)
+        binding = FragmentHomeBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val toolbarTitle = view.findViewById<TextView>(R.id.toolbar_home_title)
-        val toolbarIcon = view.findViewById<ImageView>(R.id.toolbar_home_logo)
-        val viewPager = view.findViewById<ViewPager2>(R.id.viewpager_home_banner)
-        val viewPagerIndicator = view.findViewById<TabLayout>(R.id.viewpager_home_banner_indicator)
 
+        binding.lifecycleOwner = viewLifecycleOwner
+        setToolbar()
+
+        setTopBanners()
+    }
+
+    private fun setToolbar() {
         viewModel.title.observe(viewLifecycleOwner) {
-            toolbarTitle.text = it.text
-            Glide.with(this)
-                .load(it.iconUrl)
-                .into(toolbarIcon)
+            binding.title = it
         }
-        viewPager.adapter = HomeBannerAdapter().apply {
-            viewModel.topBanners.observe(viewLifecycleOwner) {
-                submitList(it)
+    }
+
+    private fun setTopBanners() {
+        with(binding.viewpagerHomeBanner) {
+            adapter = HomeBannerAdapter().apply {
+                viewModel.topBanners.observe(viewLifecycleOwner) {
+                    submitList(it)
+                }
             }
+            val pageWidth = resources.getDimension(R.dimen.viewpager_item_width)
+            val pageMargin = resources.getDimension(R.dimen.viewpager_item_margin)
+            val screenWidth = resources.displayMetrics.widthPixels
+            val offset = screenWidth - pageWidth - pageMargin
+            setPageTransformer { page, position ->
+                page.translationX = position * -offset
+            }
+            offscreenPageLimit = 3
+            TabLayoutMediator(binding.viewpagerHomeBannerIndicator, this) { tab, position ->
+
+            }.attach()
         }
-
-
-        val pageWidth = resources.getDimension(R.dimen.viewpager_item_width)
-        val pageMargin = resources.getDimension(R.dimen.viewpager_item_margin)
-        val screenWidth = resources.displayMetrics.widthPixels
-        val offset = screenWidth - pageWidth - pageMargin
-        viewPager.setPageTransformer { page, position ->
-            page.translationX = position * -offset
-        }
-        viewPager.offscreenPageLimit = 3
-        TabLayoutMediator(viewPagerIndicator, viewPager) { tab, position ->
-
-        }.attach()
     }
 }
