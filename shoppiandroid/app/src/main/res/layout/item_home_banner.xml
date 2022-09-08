@@ -38,6 +38,7 @@
             android:textColor="@color/shoppi_white"
             app:layout_constraintBottom_toTopOf="@+id/tv_banner_title"
             app:layout_constraintStart_toStartOf="@id/iv_banner_image"
+            android:background="@{banner.badge.backGroundColor}"
             tools:background="@color/shoppi_grey_02"
             tools:text="기획전" />
 
@@ -117,6 +118,8 @@
 
         <TextView
             android:id="@+id/tv_banner_detail_product_discount_price"
+            discountRate="@{banner.productDetail.discountRate}"
+            priceAmount="@{banner.productDetail.price}"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="6dp"
@@ -126,6 +129,7 @@
 
         <TextView
             android:id="@+id/tv_banner_detail_product_price"
+            priceAmount="@{banner.productDetail.price}"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"

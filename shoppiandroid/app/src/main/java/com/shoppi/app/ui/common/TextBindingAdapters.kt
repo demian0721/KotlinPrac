@@ -11,3 +11,9 @@ fun applyPriceFormat(view: TextView, price: Int) {
     val decimalFormat = DecimalFormat("#,###")
     view.text = view.context.getString(R.string.unit_discount_currency, decimalFormat.format(price))
 }
+
+@BindingAdapter("priceAmount", "discountRate")
+fun applyPriceDiscountRate(view: TextView, price: Int, discountRate: Int) {
+    val discountPrice = (((100 - discountRate) / 100.0) * price).roundToInt()
+    applyPriceFormat(view, discountPrice)
+}
